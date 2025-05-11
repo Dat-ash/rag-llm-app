@@ -6,7 +6,7 @@ dotenv.load_dotenv()
 
 llm_stream = AzureChatOpenAI(
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_version="2024-02-15-preview",
+    api_version="2025-01-01-preview",
     azure_deployment = "gpt-4o",
     openai_api_key = os.getenv("AZURE_OPENAI_API_KEY"),
     temperature=0.3,

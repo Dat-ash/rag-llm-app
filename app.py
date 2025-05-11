@@ -99,8 +99,9 @@ def get_vectorstore(text_chunks):   #final
     embeddings = AzureOpenAIEmbeddings(
         api_key=os.getenv("AZURE_OPENAI_API_KEY"),
         azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-        model="text-embedding-3-large",
-        openai_api_version = "2024-02-01"
+        # model="text-embedding-3-large",
+        openai_api_version = "2025-01-01-preview",
+        azure_deployment="text-embedding-3-large"
     )
 
     print("Creating FAISS vector store...")
@@ -113,7 +114,7 @@ def get_conversation_chain(vectorstore):  #final
     print("\nInitializing LLM...")
     llm = AzureChatOpenAI(
         azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-        api_version="2024-05-13",
+        api_version="2025-01-01-preview",
         azure_deployment = "gpt-4o",
         openai_api_key = os.getenv("AZURE_OPENAI_API_KEY"),
         temperature=0.3,
@@ -185,6 +186,9 @@ def handle_userinput(user_question):   #final
         assistant_response = re.sub(r"(System|Human):.*?(?=Assistant:)", "", response["answer"], flags=re.DOTALL).split("Assistant:")[-1].strip()
 
         st.session_state.chat_history.add_ai_message(assistant_response)
+
+        # Display the assistant's response in the UI
+        st.write("Assistant: ", assistant_response)
                 
     except Exception as e:
         st.error(f"Error: {str(e)}")
