@@ -15,7 +15,7 @@ llm_stream = AzureChatOpenAI(
 
 prompt = "Tell me something about Azure"
 
-
+## Need to check whether invoke works or not?
 # llm_stream.invoke(prompt)
 for chunk in llm_stream.stream(prompt):
     print(chunk.content, end="", flush=True)
