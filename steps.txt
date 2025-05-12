@@ -1,0 +1,62 @@
+Detailed steps
+=======For Azure=========
+0.1 login to GitHub on VM and Clone GitHub repo to machine
+
+0.2 open vs code and open project folder  --> 
+create .env file and set " AZURE_OPENAI_API_KEY " and " AZURE_OPENAI_ENDPOINT "--> 
+open cmd in vs code terminal -->
+create virtual env " python -m venv venv "-->
+activate " venv\Scripts\venv.bat " -->
+pip install -r requirements.txt
+
+1. resource group available (Resource Group 1)
+
+2. create azure open ai resource --> redirect to azure ai foundry --> deploy gpt-40 and embedding model --> get api keys and paste in local system --> test the application using " streamlit run app.py "
+
+3. create azure app service resource --> west europe
+create azure web app --> west europe
+test logs update -->
+authentication Microsoft -->
+mention keys in Environment variables -->
+configuration Startup command (" python -m streamlit run app.py --server.port 8000 --server.address 0.0.0.0 ")--> 
+link web app with GitHub repo (deployment center) select existing workflow-->
+It will start the deployment in github repo
+
+
+=======Additional details=========
+1. libraries in requirements.txt
+langchain-community
+langchain-core
+langchain-openai
+PyPDF2
+langchain
+streamlit
+python-dotenv
+ipykernel
+faiss-cpu
+
+2. files present in repo
+-- .env
+-- .gitignore
+-- requirements.txt
+-- app.py 
+-- test_az_openai_api.ipynb
+-- steps.txt
+
+3. create new repo in GitHub and push the code
+# initialize the repo first time 
+git init -b main
+git add .
+git commit -m "rag app azure"
+
+# from GitHub after creating repo in github
+git remote add origin git@github.com:{user}/{repo}.git
+git branch -M main
+git push -u origin main
+
+Refresh the GitHub page to see all the code
+
+# git command to login via vs code terminal
+git config --global user.email "oswal.yash92741@gmail.com"
+git config --global user.name "Dat-ash"
+git clone [URL]
